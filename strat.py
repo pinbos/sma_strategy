@@ -4,6 +4,7 @@ import pandas
 import os
 import matplotlib
 import matplotlib.pyplot as plt
+import time
 
 ts = TimeSeries(key = 'API_KEY', output_format='pandas')
 
@@ -23,6 +24,8 @@ stocks = ["MMM", "AXP", "AAPL", "BA", "CAT", "CVX", "CSCO", "KO", "DOW", "XOM", 
 
 for i in stocks:
     x = strat(i)
+    time.sleep(25)
     print(x)
+    time.sleep(15)
 
 
