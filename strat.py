@@ -20,12 +20,15 @@ def strat(stocks):
     else:
         return print('SELL ' + stocks)
 
-stocks = ["MMM", "AXP", "AAPL", "BA", "CAT", "CVX", "CSCO", "KO", "DOW", "XOM", "GS", "HD", "IBM", "INTC", "JNJ", "JPM", "MCD", "MRK", "MSFT", "NKE", "PFE", "PG", "TRV", "UNH", "UTX", "VZ", "V", "WMT", "WBA", "DIS"]
+def macdStrat(stocks):
+    data, meta_data = ti.get_macd(symbol=stocks, interval='15min')
+    df = data['MACD_Hist']
+    secondmacd = df[0]
+    firstmacd = df[1]
 
-for i in stocks:
-    x = strat(i)
-    time.sleep(25)
-    print(x)
-    time.sleep(15)
+    if secondmacd > firstmacd:
+        return 'MACD: BUY ' + stocks
+    else:
+        return 'MACD: SELL ' + stocks
 
 
